@@ -1,9 +1,13 @@
+import random
+
 menu = """
 
 [d] Depositar
 [s] Sacar
 [e] Extrato
+[a] Apostar
 [q] Sair
+
 
 => """
 
@@ -12,6 +16,20 @@ limite = 500
 extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
+
+
+def aposta(valorApostado):
+    global saldo
+    val = random.randint(1, 2)
+    if (val == 1):
+        print("Você ganhou a aposta!")
+        saldo += valorApostado * 2 
+    else:
+        print("Você perdeu a aposta!")
+        saldo -= valorApostado
+
+    print(f"Valor em conta = {saldo}")
+
 
 while True:
     opcao = input(menu)
@@ -51,7 +69,13 @@ while True:
     elif opcao == "q":
         break
 
+    elif opcao == "a":
+        bet = float(input("Digite o valor que deseja apostar:"))
+        aposta(bet)
+
     else:
         print("Opçao Inválida")
         
    
+
+    
